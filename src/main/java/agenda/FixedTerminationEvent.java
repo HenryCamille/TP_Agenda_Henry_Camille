@@ -64,13 +64,13 @@ public class FixedTerminationEvent extends RepetitiveEvent {
      * @return the termination date of this repetitive event
      */
     public LocalDate getTerminationDate() {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");   
+        LocalDate terminationDate = this.getStart().plus(this.myNumberOfOccurrences-1,myFrequency).toLocalDate();
+        return terminationDate;
     }
 
     public long getNumberOfOccurrences() {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        long numberOfOccurrences = this.myNumberOfOccurrences = this.getFrequency().between(this.getStart().toLocalDate(), myTI)+1;
+        return numberOfOccurrences;
     }
         
 }

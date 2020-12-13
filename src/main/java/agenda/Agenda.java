@@ -47,7 +47,7 @@ public class Agenda {
         // TODO 
         LinkedList<Event> ListEventsSameTitle = new LinkedList<>(); 
          for(Event e : this.events){
-            if( e.getTitle() == title ){
+            if(e.getTitle().equals(title)){
                 ListEventsSameTitle.add(e);
             }
         }

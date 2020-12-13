@@ -45,12 +45,16 @@ public class Event {
      */
     public boolean isInDay(LocalDate aDay) {
         // TODO 
-        for(Event e : this.events){
-            if(this.myStart.toLocalDate() == aDay){
-                return false;  
-            }
+        boolean inDay = false;
+        LocalDateTime myFinish = myStart.plus(myDuration);
+        if(aDay.isEqual(myStart.toLocalDate()) || aDay.isEqual(myFinish.toLocalDate()))
+        {
+            inDay = true;
         }
-        return true;
+        else if(aDay.isAfter(myStart.toLocalDate()) && aDay.isBefore(myFinish.toLocalDate())){
+            inDay = true;
+        }
+        return inDay;
     }
    
     /**
@@ -74,7 +78,9 @@ public class Event {
     public Duration getDuration() {
         return myDuration;
     }
-
-   
     
+    @Override
+    public String toString() {
+        return "Event{" + "myTitle=" + myTitle + ", myStart=" + myStart + ", myDuration=" + myDuration + ", events=" + events + '}';
+    }
 }
