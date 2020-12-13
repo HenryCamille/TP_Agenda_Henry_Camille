@@ -1,6 +1,7 @@
 package agenda;
 
 import java.time.*;
+import java.util.*;
 
 public class Event {
 
@@ -18,6 +19,9 @@ public class Event {
      * The durarion of the event 
      */
     private Duration myDuration;
+    
+    
+    public LinkedList<Event> events = new LinkedList<>() ;
 
 
     /**
@@ -40,8 +44,13 @@ public class Event {
      * @return true if the event occurs on that day, false otherwise
      */
     public boolean isInDay(LocalDate aDay) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        // TODO 
+        for(Event e : this.events){
+            if(this.myStart.toLocalDate() == aDay){
+                return false;  
+            }
+        }
+        return true;
     }
    
     /**
